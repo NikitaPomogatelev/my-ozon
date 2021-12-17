@@ -585,6 +585,7 @@ nav .search-btn button::before {
   opacity: 0;
   z-index: -1;
   pointer-events: none;
+  cursor: pointer;
 }
 
 .cart.active {
@@ -605,6 +606,7 @@ nav .search-btn button::before {
   border-radius: 3px;
   transform: translateY(50px);
   transition: transform .3s ease;
+  cursor: auto;
 }
 
 .cart.active .cart-body {
