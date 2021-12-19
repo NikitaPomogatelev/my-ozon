@@ -1,11 +1,14 @@
-import getData from './modules/getData'
-import postData from './modules/postData'
+import load from './modules/load'
 import cart from './modules/cart'
 import search from './modules/search'
+import catalog from './modules/catalog'
+import sortPrice from './modules/sortPrice'
 
 document.addEventListener('DOMContentLoaded', () => {
-   getData('https://myozon-27457-default-rtdb.firebaseio.com/goods.json').then(data => console.log(data));
+    console.log('101');
+    load()
     cart()
     search()
-    console.log('101');
+    catalog()
+    sortPrice()
 });
