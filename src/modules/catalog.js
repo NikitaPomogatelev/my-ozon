@@ -6,7 +6,7 @@ const catalog = () => {
     const catalogBtn = document.querySelector('.catalog-button button')
     const catalogMenu = document.querySelector('.catalog')
     const catalogItems = catalogMenu.querySelectorAll('.catalog .catalog-list li')
-    console.log(catalogItems);
+    
     let isOpen = false
 
     // Открытие меню каталога на клик
