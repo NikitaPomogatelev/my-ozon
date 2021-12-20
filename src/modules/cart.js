@@ -47,6 +47,11 @@ const cart = () => {
         }
     }
 
+    const cart = localStorage.getItem('cart') ?
+            JSON.parse(localStorage.getItem('cart')) : []
+            localStorage.getItem('cart') ? counter.textContent = cart.length : '0'
+
+    console.log(localStorage.getItem('cart'));
 
     const openCart = () => {
         const cart = localStorage.getItem('cart') ?
@@ -74,8 +79,6 @@ const cart = () => {
 
     cartBtn.addEventListener('click', openCart)
 
-    let count = +cart.length
-    counter.innerHTML = +count
 
     goodsWrapper.addEventListener('click', ({ target }) => {
         if (target.classList.contains('btn-primary')) {
@@ -89,9 +92,9 @@ const cart = () => {
             const goodItem = goods.find((item) => {
                 return item.id === +cardKey
             })
-
+            console.log(cart);
             cart.push(goodItem)
-            counter.innerHTML = +cart.length
+            counter.textContent = +cart.length
             // Запись в массив cart b и перезаписываем в localStorage
             localStorage.setItem('cart', JSON.stringify(cart))
         }
@@ -108,9 +111,8 @@ const cart = () => {
             })
 
             cart.splice(index, 1)
-
             localStorage.setItem('cart', JSON.stringify(cart))
-
+            counter.innerHTML = +cart.length
             renderCart(cart)
             cartTotal.textContent = cart.reduce((sum, goodItem) => {
                 return sum + goodItem.price
@@ -124,6 +126,7 @@ const cart = () => {
 
         postData(cart).then(() => {
             localStorage.removeItem('cart')
+            counter.textContent = 0
 
             renderCart([])
 
